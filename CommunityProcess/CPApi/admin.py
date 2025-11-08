@@ -6,7 +6,7 @@ from .models import Issue
 
 class IssueAdmin(admin.ModelAdmin):
     # Define the list of fields to display in the admin interface
-    list_display = ('Issue_name')
+    list_display = ('Issue_name', 'description')
     
     # Add search functionality for specific fields
     search_fields = ('Issue_name', 'description')
