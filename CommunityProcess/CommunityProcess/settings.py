@@ -23,7 +23,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-)ze-rfvnd%y51_3w&$9y&^5zr+q5sezwh$s7is*k)*@n+g-8kc'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = []
 
@@ -75,12 +75,8 @@ WSGI_APPLICATION = 'CommunityProcess.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME' : 'postgres',
-        'USER' : 'postgres',
-        'PASSWORD' : 'postgres',
-        'HOST' : 'db',
-        'PORT' : '5432',
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
