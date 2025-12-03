@@ -1,8 +1,10 @@
 from django.contrib import admin
-from .models import Issue
+from .models import Issue, Question
 
 # Register your models here.
 
+# Adding question to the admin site interface
+admin.site.register(Question)
 
 class IssueAdmin(admin.ModelAdmin):
     # Define the list of fields to display in the admin interface
