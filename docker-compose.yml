@@ -7,11 +7,11 @@ services:
     volumes:
       - .:/code
   db:
-    image: postgres:14-alpine3.21
+    image: sqlite3
     volumes:
-      - postgres_data:/var/lib/postgresql/data
+      - sqlite3_data:/var/lib/sqlite3/data
     environment:
-      - "POSTGRES_HOST_AUTH_METHOD=trust"
+      - "SQLITE_HOST_AUTH_METHOD=trust"
 
 volumes:
-  postgres_data:
+  sqlite3_data:
