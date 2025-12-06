@@ -5,7 +5,10 @@ from django.urls import reverse
 from django.views import generic
 from django.utils import timezone
 from .models import Choice, Question
-
+from rest_framework import status
+from rest_framework.response import Response
+from rest_framework.decorators import api_view
+from .serializers import QuestionSerializer
 
 class IndexView(generic.ListView):
     template_name = "CPApi/index.html"
@@ -17,6 +20,14 @@ class IndexView(generic.ListView):
         :5
     ]
 
+@api_view(['GET'])
+def rest_get_question(request, question_id):
+    try:
+        question = Question.objects.get(pk=question_id)
+        serializer = QuestionSerializer(question)
+        return Response(serializer.data)
+    except Question.DoesNotExist:
+        return Response({'error': 'Quesiton not found.'}, status=status.HTTP_404_NOT_FOUND)
 
 class DetailView(generic.DetailView):
     model = Question

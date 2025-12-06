@@ -1,8 +1,39 @@
 {% load static %}
 
 <link rel="stylesheet" href="{% static 'CPApi/style.css' %}">
+  <head>
+    {% block title %}
+      <title>Community Process App</title>
+    {% endblock %}
+  </head>
 
-{% if latest_question_list %}
+<body>
+  <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-2">
+          {% block sidebar %}
+            <ul class="sidebar-nav">
+              <li><a href="">Home</a></li>
+              <li><a href="">Profile</a></li>
+              <li><a href="">Logout</a></li>
+            </ul>
+          {% endblock %}
+        </div>
+        <div class="col-sm-10 ">{% block bar %}{% endblock %}</div>
+      </div>
+    </div>
+</body>
+
+{% block content %}
+  <h1>Community Process Home</h1>
+  <p>
+    Welcome to Community Process, a website developed by
+    <em>Tobias Lathrop</em>!
+  </p>
+{% endblock %}
+
+  <body>
+    {% if latest_question_list %}
     <ul>
     {% for question in latest_question_list %}
         <li><a href="{% url 'CPApi:detail' question.id %}">{{ question.question_text }}</a></li>
@@ -11,3 +42,4 @@
     {% else %}
         <p>No issues are available.</p>
      {% endif %}
+  </body>

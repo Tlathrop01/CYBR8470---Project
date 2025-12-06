@@ -9,7 +9,7 @@ class QuestionAdmin(admin.ModelAdmin):
         (None, {"fields": ["question_text"]}),
         ("Date information", {"fields": ["pub_date"]}),
     ]
-    list_display = ["question_text", "pub_date", "was_published_recently"]
+    list_display = ["question_text", "owner", "pub_date", "was_published_recently"]
     list_filter = ["pub_date"]
     search_fields = ["question_text"]
 
@@ -30,7 +30,7 @@ class IssueAdmin(admin.ModelAdmin):
     # Add search functionality for specific fields
     search_fields = ('Issue_name', 'description')
 
-    # Add filters for the age and breed fields in the sidebar
+    # Add filters for the fields in the sidebar
     list_filter = ('Issue_name', 'description')
 
     # Define which fields can be clicked to view the details page

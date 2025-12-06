@@ -2,6 +2,7 @@ import datetime
 from django.contrib import admin
 from django.db import models
 from django.utils import timezone
+from django.contrib.auth.models import User
 
 # Currently useless model made for future 
 class Issue(models.Model):
@@ -13,6 +14,7 @@ class Issue(models.Model):
     
 # This represents the current issue handling for the app I just can't be bothered to change the name yet
 class Question(models.Model):
+    owner = models.ForeignKey(User, on_delete=models.CASCADE, null=True, blank=True)
     question_text = models.CharField(max_length=200)
     pub_date = models.DateTimeField("date published")
     @admin.display(
@@ -31,4 +33,4 @@ class Choice(models.Model):
     votes = models.IntegerField(default=0)
 
     def __str__(self):
-        return self.question_text
+        return self.choice_text
