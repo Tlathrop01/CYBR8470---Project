@@ -13,8 +13,8 @@
         <div class="col-sm-2">
           {% block sidebar %}
             <ul class="sidebar-nav">
-              <li><a href="">Home</a></li>
-              <li><a href="">Profile</a></li>
+              <li><a href="{% url 'CPApi:index' %}">Index</a></li>
+              <li><a href="{% url 'CPApi:profile' %}">Profile</a></li>
               <li><a href="">Logout</a></li>
             </ul>
           {% endblock %}

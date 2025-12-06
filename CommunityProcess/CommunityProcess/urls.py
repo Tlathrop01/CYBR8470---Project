@@ -16,7 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from CPApi import views
+from CPApi.views import profile
 from django.contrib.auth import views as auth_views
 
 

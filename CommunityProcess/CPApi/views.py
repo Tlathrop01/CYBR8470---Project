@@ -9,6 +9,12 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from .serializers import QuestionSerializer
+from django.contrib.auth.decorators import login_required
+
+
+@login_required
+def profile(request):
+    return render(request, 'CPApi/profile.html')
 
 class IndexView(generic.ListView):
     template_name = "CPApi/index.html"
