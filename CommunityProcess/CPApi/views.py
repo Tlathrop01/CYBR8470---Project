@@ -11,11 +11,12 @@ from rest_framework.decorators import api_view
 from .serializers import QuestionSerializer
 from django.contrib.auth.decorators import login_required
 
-
+#Basic landing page on login
 @login_required
 def profile(request):
     return render(request, 'CPApi/profile.html')
 
+#index page view displays list of quesitons from the community
 class IndexView(generic.ListView):
     template_name = "CPApi/index.html"
     context_object_name = "latest_question_list"
@@ -35,11 +36,12 @@ def rest_get_question(request, question_id):
     except Question.DoesNotExist:
         return Response({'error': 'Quesiton not found.'}, status=status.HTTP_404_NOT_FOUND)
 
+#view for the detail page
 class DetailView(generic.DetailView):
     model = Question
     template_name = "CPApi/detail.html"
 
-
+#view to detail each quesitons results
 class ResultsView(generic.DetailView):
     model = Question
     template_name = "CPApi/results.html"

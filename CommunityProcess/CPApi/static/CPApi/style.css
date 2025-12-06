@@ -2,8 +2,23 @@ li a {
     color: blue;
 }
 
-li h1 {
-  color: black;
+h1,h2,h3,h4,h5 {
+    font-weight: bold;
+}
+
+h1 {
+    margin: 0 0 20px;
+    font-weight: 300;
+    font-size: 1.25rem;
+}
+
+ul > li {
+    list-style-type: square;
+    padding: 1px 0;
+}
+
+li ul {
+    margin-bottom: 0;
 }
 
 body {
