@@ -1,7 +1,17 @@
 li a {
-    color: green;
+    color: blue;
+}
+
+li h1 {
+  color: white;
 }
 
 body {
-    background: white url("images/background.jpeg") no-repeat;
+    background: white;
+}
+
+.sidebar-nav {
+  margin-top: 20px;
+  padding: 0;
+  list-style: none;
 }
