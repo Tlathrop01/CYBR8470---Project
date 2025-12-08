@@ -10,6 +10,8 @@ from rest_framework.response import Response
 from rest_framework.decorators import api_view
 from .serializers import QuestionSerializer
 from django.contrib.auth.decorators import login_required
+from .forms import QuestionForm, ChoiceForm
+
 
 #Basic landing page on login
 @login_required
@@ -27,6 +29,24 @@ class IndexView(generic.ListView):
         :5
     ]
 
+#This is the view used on addquestion.html to handle POSTing of new questions by users.
+def addquestion(request):
+    if request.method == "POST":
+        form = QuestionForm(request.POST)
+        if form.is_valid():
+            Question = form.save(commit=False)
+            Question.owner = request.user
+            Question.pub_date = timezone.now()
+            Question.save()
+    form = QuestionForm()
+    return render(request, "CPApi/addquestion.html", {"form": form})
+
+
+#just used to render the base style for the website
+def base(request):
+    return render(request, "CPApi/base.html")
+
+#Honest nothing ignore
 @api_view(['GET'])
 def rest_get_question(request, question_id):
     try:

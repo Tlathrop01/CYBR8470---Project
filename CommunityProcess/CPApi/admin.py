@@ -22,7 +22,7 @@ class ChoiceInline(admin.TabularInline):
 
 admin.site.register(Choice)
 
-
+#this dont do nothing
 class IssueAdmin(admin.ModelAdmin):
     # Define the list of fields to display in the admin interface
     list_display = ('Issue_name', 'description')

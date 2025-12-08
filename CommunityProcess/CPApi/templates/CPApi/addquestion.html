@@ -1,22 +1,30 @@
-
 {% extends 'CPApi/base.html' %}
 
 <!DOCTYPE html>
 
 {% block content %}
 
-<form action="{% url 'CPApi:vote' question.id %}" method="post">
-{% csrf_token %}
-<fieldset>
-    <legend><h1>{{ question.question_text }}</h1></legend>
-    {% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
-    {% for choice in question.choice_set.all %}
-        <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}">
-        <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br>
-    {% endfor %}
-</fieldset>
-<input type="submit" value="Vote">
-</form>
+<div class="column">
+  <p>
+    Submit a question to your local community here.
+  </p>
+
+</div>
+
+<div class="column-is-one-third">
+  <form method="post">
+        {% csrf_token %}
+        <div class="textarea is-success is-medium">
+          {{ form.as_p }}
+        </div>
+        <div>
+          {{ form_choice.as_p }}
+        </div>
+        <button class="button is-success is-fullwidth is-medium mt-5"
+                type="submit">Submit
+        </button>
+    </form>
+</div>
 
 <div class="column is-one-fifth">
   <div class="block">

@@ -1,22 +1,6 @@
+{% extends 'CPApi/base.html' %}
 
-<html>
-
-<body>
-  <div class="container-fluid">
-      <div class="row">
-        <div class="col-sm-2">
-          {% block sidebar %}
-            <ul class="sidebar-nav">
-              <li><a href="{% url 'CPApi:index' %}">Index</a></li>
-              <li><a href="">Profile</a></li>
-              <li><a href="">Logout</a></li>
-            </ul>
-          {% endblock %}
-        </div>
-        <div class="col-sm-10 ">{% block bar %}{% endblock %}</div>
-      </div>
-    </div>
-</body>
+<!DOCTYPE html>
 
 <head>
     {% block title %}
@@ -25,12 +9,36 @@
 </head>
 
 {% block content %}
-  <h1>Community Process Account Profile</h1>
   <p>
     Welcome to Community Process Profile page
     <em></em>!
   </p>
+
+
+<div class="column is-one-fifth">
+  <div class="block">
+    <a href="{% url 'CPApi:index' %}">
+        <button class="button is-dark is-outlined is-fullwidth">
+            Index
+        </button>
+    </a>
+  </div>
+  <div class="block">
+    <a href="{% url 'CPApi:profile' %}">
+        <button class="button is-dark is-outlined is-fullwidth">
+            Profile
+        </button>
+    </a>
+  </div>
+  <div class="block">
+    <a href="{% url 'CPApi:addquestion' %}">
+        <button class="button is-dark is-outlined is-fullwidth">
+            Submit a Question
+        </button>
+    </a>
+  </div>
+</div>
+
 {% endblock %}
 
 
-</html>
